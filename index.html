@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sorting Visualizer</title>
+  </head>
+  <body>
+    <main class="container">
+      <!-- заголовок -->
+      <h1>Sorting Visualizer</h1>
+
+      <!-- запуск генерации чисел
+      <div>
+        <form action="" method="get">
+          <div>
+            <label for="min">Введите минимальное значение: </label>
+            <input type="text" name="min" id="min" required />
+          </div>
+          <div>
+            <label for="max">Введите максимальное значение: </label>
+            <input type="text" name="max" id="max" required />
+          </div>
+          <div>
+            <label for="quantity">Введите колличество: </label>
+            <input type="text" name="quantity" id="quantity" required />
+          </div>
+          <input type="submit" value="Записать" onclick="getData()" />
+        </form>
+        <button onclick="arrGeneration(3, 50, 10)">
+          запустить генерацию случайных чисел
+        </button>
+      </div> -->
+
+      <!-- контейнер для столбцов -->
+      <button type="button" id="generate">сгенерировать случайные числа</button>
+      <button type="button" id="drow">нарисовать</button>
+      <div class="animation-container">
+        <div class="animation-wrapper" id="container"></div>
+      </div>
+
+      <!-- кнопки для выбора сортировки -->
+      <div>
+        <p>Выбери алгоритм сортировки</p>
+        <button>Bubble Sort</button>
+        <button>Selection Sort</button>
+        <button>Insertion Sort</button>
+        <button>Quick Sort</button>
+      </div>
+      <button type="button" id="clean">сбросить</button>
+    </main>
+  </body>
+  <script src="/index.js" module></script>
+</html>
