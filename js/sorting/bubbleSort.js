@@ -1,19 +1,25 @@
 'use strict';
-import { arr } from '../rundomNumbersGeneration.js';
+import { rundomArr } from '../rundomNumbersGeneration.js';
 import { eraseColumns } from '../cleaningColumns.js';
 import { arrToCol } from '../drowingColumns.js';
 
-export function bubbleSort() {
-  eraseColumns();
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - 1 - i; j++)
-      if (arr[j] > arr[j + 1]) {
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
+function bubbleSort() {
+  const sortedArr = [...rundomArr];
+
+  for (let i = 0; i < sortedArr.length; i++) {
+    for (let j = 0; j < sortedArr.length - 1 - i; j++)
+      if (sortedArr[j] > sortedArr[j + 1]) {
+        let temp = sortedArr[j];
+        sortedArr[j] = sortedArr[j + 1];
+        sortedArr[j + 1] = temp;
       }
   }
-  console.log(arr);
-  arrToCol();
-  return arr;
+
+  return sortedArr;
+}
+
+export function onBubbleSortButtonClick() {
+  const sortedArr = bubbleSort();
+  eraseColumns();
+  arrToCol(sortedArr);
 }

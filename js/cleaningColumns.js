@@ -1,17 +1,18 @@
-import { arr } from './rundomNumbersGeneration.js';
+import { rundomArr } from './rundomNumbersGeneration.js';
 import { generateArrButton, drowButton } from './elements.js';
 
 // очищаем массив
 function arrCleaner() {
   generateArrButton.disabled = false;
   drowButton.disabled = false;
-  arr.length = 0;
+  rundomArr.length = 0;
 }
 
-// стоираем столбики
+// стираем столбики
 export function eraseColumns() {
-  arr.map(el => {
+  rundomArr.forEach(el => {
     const col = document.getElementById(`${el}`);
+
     col.remove();
   });
 }

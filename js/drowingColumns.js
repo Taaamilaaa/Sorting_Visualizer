@@ -1,4 +1,4 @@
-import { arr } from './rundomNumbersGeneration.js';
+import { rundomArr } from './rundomNumbersGeneration.js';
 import { drowButton, container } from './elements.js';
 
 //рисуем массив
@@ -17,9 +17,10 @@ export function columnGenerator(a) {
   drowButton.disabled = true;
 }
 
-export function arrToCol() {
-  if (arr.length > 0) {
-    arr.map(el => columnGenerator(el));
-  }
+export function arrToCol(newArr) {
+  newArr.map(el => columnGenerator(el));
   return;
+}
+export function onDrowButtonClick() {
+  arrToCol(rundomArr);
 }

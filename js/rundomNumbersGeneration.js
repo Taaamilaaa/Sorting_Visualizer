@@ -1,15 +1,17 @@
 'use strict';
 import { generateArrButton } from './elements.js';
 
-export const arr = [];
+export let rundomArr = [];
 
-//генерируем случайные числа в массив
+//генерируем случайные уникальные числа
 
 export function arrGeneration(minVal, maxVal, quantityVal) {
-  for (let i = 1; i <= quantityVal; i++) {
-    const item = Math.floor(Math.random() * (maxVal - minVal) + minVal);
-    arr.push(item);
+  let set = new Set();
+  while (set.size < quantityVal) {
+    let item = Math.floor(Math.random() * (maxVal - minVal) + minVal);
+    set.add(item);
   }
+  rundomArr = [...set];
+
   generateArrButton.disabled = true;
-  console.log(arr);
 }
