@@ -1,5 +1,6 @@
 'use strict';
 import { generateArrButton } from './elements.js';
+import { drowColumns } from './drowingColumns.js';
 
 export let rundomArr = [];
 
@@ -14,4 +15,5 @@ export function arrGeneration(minVal, maxVal, quantityVal) {
   rundomArr = [...set];
 
   generateArrButton.disabled = true;
+  drowColumns();
 }

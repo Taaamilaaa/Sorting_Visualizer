@@ -1,10 +1,9 @@
 import { rundomArr } from './rundomNumbersGeneration.js';
-import { generateArrButton, drowButton } from './elements.js';
+import { generateArrButton } from './elements.js';
 
 // очищаем массив
 function arrCleaner() {
   generateArrButton.disabled = false;
-  drowButton.disabled = false;
   rundomArr.length = 0;
 }
 

@@ -1,5 +1,5 @@
 import { rundomArr } from './rundomNumbersGeneration.js';
-import { drowButton, container } from './elements.js';
+import { container } from './elements.js';
 
 //рисуем массив
 
@@ -16,7 +16,6 @@ export function columnGenerator(a) {
   column.title = a;
   column.id = a;
   container.append(column);
-  drowButton.disabled = true;
 }
 function colorColumns(a) {
   const min = 2;
@@ -25,7 +24,6 @@ function colorColumns(a) {
   const maxAlpha = 1;
 
   let alpha = (a - min) / (max - min);
-  console.log(alpha);
   alpha = minAlpha + alpha * (maxAlpha - minAlpha);
   return alpha.toFixed(2);
 
@@ -45,6 +43,6 @@ export function arrToCol(newArr) {
   newArr.map(el => columnGenerator(el));
   return;
 }
-export function onDrowButtonClick() {
+export function drowColumns() {
   arrToCol(rundomArr);
 }
