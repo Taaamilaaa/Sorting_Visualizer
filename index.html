@@ -40,7 +40,17 @@
       </div> -->
 
       <!-- контейнер для столбцов -->
-      <button type="button" id="generate">сгенерировать случайные числа</button>
+      <div>
+        <button type="button" id="generate">
+          сгенерировать случайные числа
+        </button>
+        <button type="button" id="clean">сбросить</button>
+      </div>
+
+      <label
+        >Скорость:
+        <input type="range" id="speedSlider" min="10" max="500" value="100" />
+      </label>
       <div class="animation-container">
         <div class="animation-wrapper" id="container"></div>
       </div>
@@ -53,7 +63,6 @@
         <button>Insertion Sort</button>
         <button>Quick Sort</button>
       </div>
-      <button type="button" id="clean">сбросить</button>
     </main>
   </body>
   <script type="module" src="./js/index.js"></script>
