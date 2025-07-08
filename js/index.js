@@ -11,7 +11,7 @@ import {
 
 import { onBubbleSortButtonClick } from './sorting/bubbleSort.js';
 
-generateArrButton.addEventListener('click', () => arrGeneration(2, 150, 15));
+generateArrButton.addEventListener('click', () => arrGeneration(2, 150, 10));
 cleanArrButton.addEventListener('click', () => cleaningContainer());
 bubbleSortButton.addEventListener('click', () => onBubbleSortButtonClick());
 selectionSortButton.addEventListener('click', () =>

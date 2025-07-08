@@ -1,11 +1,9 @@
 'use strict';
-// import { rundomArr } from '../rundomNumbersGeneration.js';
-// import { cleaningContainer, eraseColumns } from '../cleaningColumns.js';
-// import { arrToCol } from '../drowingColumns.js';
 import { delay, animateSwap } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
 import { container } from '../elements.js';
-import { bubbleSortButton, speedSlider } from '../elements.js';
+import { bubbleSortButton, selectionSortButton } from '../elements.js';
+import { ms } from '../animation.js';
 
 async function bubbleSort() {
   const columns = Array.from(container.children);
@@ -27,13 +25,13 @@ async function bubbleSort() {
       a.style.backgroundColor = `rgba(255, 157, 35, ${aAlpha})`;
       b.style.backgroundColor = `rgba(255, 157, 35, ${bAlpha})`;
 
-      await delay(800); // задержка для видимой анимации
+      await delay(ms); // задержка для видимой анимации
 
       if (id1 > id2) {
         // меняем их местами в DOM
         a.classList.add('biggest');
         await animateSwap(a, b);
-        container.insertBefore(b, a);
+
         // и меняем их местами в массиве columns
         [columns[j], columns[j + 1]] = [columns[j + 1], columns[j]];
       }
@@ -52,9 +50,17 @@ async function bubbleSort() {
   const transparency = colorColumns(columns[0].id);
 
   columns[0].style.backgroundColor = `rgba(6, 146, 62, ${transparency})`;
+  bubbleSortButton.disabled = false;
+  selectionSortButton.disabled = false;
 }
 
 export function onBubbleSortButtonClick() {
-  bubbleSortButton.disabled = true;
-  bubbleSort();
+  const columns = Array.from(container.children);
+  if (columns.length === 0) {
+    alert('сгенерируйте числа');
+  } else {
+    bubbleSortButton.disabled = true;
+    selectionSortButton.disabled = true;
+    bubbleSort();
+  }
 }
