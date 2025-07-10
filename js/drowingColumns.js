@@ -1,4 +1,4 @@
-import { rundomArr } from './rundomNumbersGeneration.js';
+import { randomArr } from './randomNumbersGeneration.js';
 import { container } from './elements.js';
 
 //рисуем массив
@@ -20,7 +20,7 @@ export function columnGenerator(a) {
   const text = document.createElement('span');
   column.append(text);
   text.textContent = a;
-  text.classList.add('colomns-title');
+  text.classList.add('columns-title');
 }
 
 export function colorColumns(a) {
@@ -37,6 +37,6 @@ export function arrToCol(newArr) {
   newArr.map(el => columnGenerator(el));
   return;
 }
-export function drowColumns() {
-  arrToCol(rundomArr);
+export function drawColumns() {
+  arrToCol(randomArr);
 }

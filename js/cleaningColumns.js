@@ -1,15 +1,20 @@
-import { rundomArr } from './rundomNumbersGeneration.js';
+import { randomArr } from './randomNumbersGeneration.js';
 import { generateArrButton } from './elements.js';
+import {
+  bubbleSortButton,
+  selectionSortButton,
+  insertionSortButton,
+} from './elements.js';
 
 // очищаем массив
 function arrCleaner() {
   generateArrButton.disabled = false;
-  rundomArr.length = 0;
+  randomArr.length = 0;
 }
 
 // стираем столбики
 export function eraseColumns() {
-  rundomArr.forEach(el => {
+  randomArr.forEach(el => {
     const col = document.getElementById(`${el}`);
 
     col.remove();
@@ -19,4 +24,7 @@ export function eraseColumns() {
 export function cleaningContainer() {
   eraseColumns();
   arrCleaner();
+  bubbleSortButton.disabled = false;
+  selectionSortButton.disabled = false;
+  insertionSortButton.disabled = false;
 }

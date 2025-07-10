@@ -2,7 +2,11 @@
 import { delay, animateSwap } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
 import { container } from '../elements.js';
-import { bubbleSortButton, selectionSortButton } from '../elements.js';
+import {
+  bubbleSortButton,
+  selectionSortButton,
+  insertionSortButton,
+} from '../elements.js';
 import { ms } from '../animation.js';
 
 async function bubbleSort() {
@@ -29,13 +33,14 @@ async function bubbleSort() {
 
       if (id1 > id2) {
         // меняем их местами в DOM
-        a.classList.add('biggest');
+        a.classList.add('moving');
+        await delay(ms);
         await animateSwap(a, b);
 
         // и меняем их местами в массиве columns
         [columns[j], columns[j + 1]] = [columns[j + 1], columns[j]];
       }
-      a.classList.remove('biggest');
+      a.classList.remove('moving');
       a.style.backgroundColor = `rgba(0, 128, 157, ${aAlpha})`;
       b.style.backgroundColor = `rgba(0, 128, 157, ${bAlpha})`;
       a.classList.remove('animating');
@@ -52,6 +57,7 @@ async function bubbleSort() {
   columns[0].style.backgroundColor = `rgba(6, 146, 62, ${transparency})`;
   bubbleSortButton.disabled = false;
   selectionSortButton.disabled = false;
+  insertionSortButton.disabled = false;
 }
 
 export function onBubbleSortButtonClick() {
@@ -61,6 +67,7 @@ export function onBubbleSortButtonClick() {
   } else {
     bubbleSortButton.disabled = true;
     selectionSortButton.disabled = true;
+    insertionSortButton.disabled = true;
     bubbleSort();
   }
 }

@@ -1,8 +1,8 @@
 'use strict';
 import { generateArrButton } from './elements.js';
-import { drowColumns } from './drowingColumns.js';
+import { drawColumns } from './drowingColumns.js';
 
-export let rundomArr = [];
+export let randomArr = [];
 
 //генерируем случайные уникальные числа
 
@@ -12,8 +12,8 @@ export function arrGeneration(minVal, maxVal, quantityVal) {
     let item = Math.floor(Math.random() * (maxVal - minVal) + minVal);
     set.add(item);
   }
-  rundomArr = [...set];
+  randomArr = [...set];
 
   generateArrButton.disabled = true;
-  drowColumns();
+  drawColumns();
 }
