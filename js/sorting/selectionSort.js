@@ -44,6 +44,7 @@ async function selectionSort() {
 
     if (minIndex !== i) {
       await animateSwap(columns[i], columns[minIndex]);
+      await delay(ms);
 
       // Visually rearrange in DOM
       container.insertBefore(columns[minIndex], columns[i]);
