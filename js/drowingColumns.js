@@ -1,7 +1,7 @@
 import { randomArr } from './randomNumbersGeneration.js';
 import { container } from './elements.js';
 
-//рисуем массив
+// Draw an array
 
 export function columnGenerator(a) {
   const transparency = colorColumns(a);

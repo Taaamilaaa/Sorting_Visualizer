@@ -2,10 +2,12 @@ body {
   font-family: 'Cormorant', serif;
   font-size: 16px;
   font-weight: 400;
+  background-color: #f5f5f2;
+  color: #2c2c2c;
 }
 h1 {
   font-size: 45px;
-  color: rgb(22, 15, 78);
+  color: #333;
 }
 .container {
   text-align: center;
@@ -14,6 +16,7 @@ h1 {
   width: 70%;
   margin: 45px auto;
 }
+
 .animation-wrapper {
   display: flex;
   align-items: flex-end;
@@ -21,6 +24,69 @@ h1 {
   border: 1px solid black;
   width: auto;
   height: 350px;
+  background-color: #fdfcf9;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  background-color: #00809d;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005f70;
+}
+button:disabled {
+  background-color: #1d67746e;
+}
+
+#speedSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 45%;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    #00809d62 0%,
+    #00809d62 var(--val, 50%),
+    #ddd var(--val, 50%),
+    #ddd 100%
+  );
+  outline: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+}
+
+#speedSlider:hover {
+  opacity: 1;
+}
+
+/* Thumb */
+#speedSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #00809d;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+#speedSlider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #00809d;
+  cursor: pointer;
+  border-radius: 50%;
 }
 .columns {
   position: relative;

@@ -1,5 +1,12 @@
 'use strict';
-import { generateArrButton } from './elements.js';
+import {
+  generateArrButton,
+  cleanArrButton,
+  bubbleSortButton,
+  insertionSortButton,
+  selectionSortButton,
+  container,
+} from './elements.js';
 import { drawColumns } from './drowingColumns.js';
 
 export let randomArr = [];
@@ -15,5 +22,16 @@ export function arrGeneration(minVal, maxVal, quantityVal) {
   randomArr = [...set];
 
   generateArrButton.disabled = true;
+
+  const containerText = document.getElementById('text');
+
+  if (containerText !== null) {
+    const throwawayNode = container.removeChild(containerText);
+  }
+
   drawColumns();
+  cleanArrButton.disabled = false;
+  bubbleSortButton.disabled = false;
+  selectionSortButton.disabled = false;
+  insertionSortButton.disabled = false;
 }

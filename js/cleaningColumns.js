@@ -1,9 +1,11 @@
 import { randomArr } from './randomNumbersGeneration.js';
-import { generateArrButton } from './elements.js';
 import {
+  container,
   bubbleSortButton,
   selectionSortButton,
   insertionSortButton,
+  generateArrButton,
+  cleanArrButton,
 } from './elements.js';
 
 // очищаем массив
@@ -12,7 +14,18 @@ function arrCleaner() {
   randomArr.length = 0;
 }
 
-// стираем столбики
+function textCreator() {
+  const text = document.createElement('p');
+  text.id = 'text';
+  text.textContent = 'generate a new array of numbers';
+  text.style.color = '#2c2c2c';
+  text.style.fontSize = '30px';
+  text.style.margin = 'auto';
+  text.style.textTransform = 'uppercase';
+  container.appendChild(text);
+}
+
+// Remove the columns
 export function eraseColumns() {
   randomArr.forEach(el => {
     const col = document.getElementById(`${el}`);
@@ -24,7 +37,9 @@ export function eraseColumns() {
 export function cleaningContainer() {
   eraseColumns();
   arrCleaner();
-  bubbleSortButton.disabled = false;
-  selectionSortButton.disabled = false;
-  insertionSortButton.disabled = false;
+  textCreator();
+  cleanArrButton.disabled = true;
+  bubbleSortButton.disabled = true;
+  selectionSortButton.disabled = true;
+  insertionSortButton.disabled = true;
 }

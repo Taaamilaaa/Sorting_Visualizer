@@ -29,7 +29,7 @@ export async function insertionSort() {
 
       await animateSwap(columns[j - 1], columns[j]);
 
-      // Обновим DOM и массив
+      // Update the DOM and array
       container.insertBefore(columns[j], columns[j - 1]);
       [columns[j], columns[j - 1]] = [columns[j - 1], columns[j]];
 
@@ -43,7 +43,7 @@ export async function insertionSort() {
     current.style.backgroundColor = `rgba(0, 128, 157, ${currentAlpha})`;
   }
 
-  // Финальное выделение отсортированных
+  // Final selection of sorted
   for (let col of columns) {
     let sortedAlpha = colorColumns(col.id);
     col.style.backgroundColor = `rgba(6, 146, 62, ${sortedAlpha})`;

@@ -24,20 +24,20 @@ async function bubbleSort() {
       const aAlpha = colorColumns(id1);
       const bAlpha = colorColumns(id2);
 
-      //делаем стили для сравниваемых столбцов
+      //Style the columns being compared
 
       a.style.backgroundColor = `rgba(255, 157, 35, ${aAlpha})`;
       b.style.backgroundColor = `rgba(255, 157, 35, ${bAlpha})`;
 
-      await delay(ms); // задержка для видимой анимации
+      await delay(ms);
 
       if (id1 > id2) {
-        // меняем их местами в DOM
+        // Swap them in the DOM
         a.classList.add('moving');
         await delay(ms);
         await animateSwap(a, b);
 
-        // и меняем их местами в массиве columns
+        // And swap them in the columns array
         [columns[j], columns[j + 1]] = [columns[j + 1], columns[j]];
       }
       a.classList.remove('moving');
@@ -46,7 +46,7 @@ async function bubbleSort() {
       a.classList.remove('animating');
       b.classList.remove('animating');
     }
-    //стили для отсортированных колонок
+    //Styles for sorted columns
     const transparency = colorColumns(columns[n - i - 1].id);
     columns[
       n - i - 1

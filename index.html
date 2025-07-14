@@ -10,32 +10,33 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/3859/3859423.png"
+    />
     <title>Sorting Visualizer</title>
   </head>
   <body>
     <main class="container">
-      <!-- заголовок -->
+      <!-- header -->
       <h1>Sorting Visualizer</h1>
 
-      <!-- контейнер для столбцов -->
+      <!-- container for columns -->
       <div>
-        <button type="button" id="generate">
-          сгенерировать случайные числа
-        </button>
-        <button type="button" id="clean">сбросить</button>
+        <button type="button" id="generate">generate random numbers</button>
+        <button type="button" id="clean">reset</button>
       </div>
 
-      <label
-        >Скорость:
+      <label class="range-container">
         <input type="range" id="speedSlider" min="10" max="800" value="100" />
       </label>
       <div class="animation-container">
         <div class="animation-wrapper" id="container"></div>
       </div>
 
-      <!-- кнопки для выбора сортировки -->
+      <!-- buttons for sorting selection -->
       <div>
-        <p>Выбери алгоритм сортировки</p>
+        <p>Select sorting algorithm</p>
         <button type="button" id="bubbleSort">Bubble Sort</button>
         <button type="button" id="selectionSort">Selection Sort</button>
         <button type="button" id="insertionSort">Insertion Sort</button>

@@ -3,6 +3,7 @@ import {
   container,
   selectionSortButton,
   bubbleSortButton,
+  insertionSortButton,
 } from '../elements.js';
 import { animateSwap } from '../animation.js';
 import { delay } from '../animation.js';
@@ -35,26 +36,30 @@ async function selectionSort() {
         columns[
           minIndex
         ].style.backgroundColor = `rgba(255, 157, 35, ${alphaMinIndex})`;
+        columns[minIndex].classList.add('moving');
+        await delay(ms);
+        columns[minIndex].classList.remove('moving');
       }
     }
 
     if (minIndex !== i) {
       await animateSwap(columns[i], columns[minIndex]);
 
-      // Визуально переставляем в DOM
+      // Visually rearrange in DOM
       container.insertBefore(columns[minIndex], columns[i]);
 
-      // После вставки нужно обновить columns — пересоздать список DOM-элементов
+      // After insertion, you need to update columns - recreate the list of DOM elements
       columns = Array.from(container.children);
     }
 
-    // Финальный стиль отсортированной колонки
+    // Final style of sorted column
     const alpha = colorColumns(columns[i].id);
     columns[i].style.backgroundColor = `rgba(6, 146, 62, ${alpha})`;
     columns[i].style.boxShadow = '';
   }
   selectionSortButton.disabled = false;
   bubbleSortButton.disabled = false;
+  insertionSortButton.disabled = false;
 }
 
 export function onSelectionSortButtonClick() {
@@ -64,6 +69,7 @@ export function onSelectionSortButtonClick() {
   } else {
     selectionSortButton.disabled = true;
     bubbleSortButton.disabled = true;
+    insertionSortButton.disabled = true;
     selectionSort();
   }
 }
