@@ -7,7 +7,7 @@ import {
   selectionSortButton,
   insertionSortButton,
 } from '../elements.js';
-import { ms } from '../animation.js';
+import { ms } from '../index.js';
 
 async function bubbleSort() {
   const columns = Array.from(container.children);

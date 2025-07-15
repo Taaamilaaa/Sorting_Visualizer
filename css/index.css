@@ -47,6 +47,7 @@ button:disabled {
 }
 
 #speedSlider {
+  visibility: hidden;
   -webkit-appearance: none;
   appearance: none;
   width: 45%;
@@ -62,6 +63,9 @@ button:disabled {
   opacity: 0.9;
   transition: opacity 0.2s;
   border-radius: 5px;
+}
+#speedSlider.initialized {
+  visibility: visible;
 }
 
 #speedSlider:hover {

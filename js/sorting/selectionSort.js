@@ -8,7 +8,7 @@ import {
 import { animateSwap } from '../animation.js';
 import { delay } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
-import { ms } from '../animation.js';
+import { ms } from '../index.js';
 
 async function selectionSort() {
   let columns = Array.from(container.children);

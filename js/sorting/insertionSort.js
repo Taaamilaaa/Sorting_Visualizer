@@ -7,7 +7,8 @@ import {
 } from '../elements.js';
 import { animateSwap } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
-import { delay, ms } from '../animation.js';
+import { delay } from '../animation.js';
+import { ms } from '../index.js';
 
 export async function insertionSort() {
   const columns = Array.from(container.children);
