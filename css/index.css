@@ -8,13 +8,14 @@ body {
 h1 {
   font-size: 45px;
   color: #333;
+  margin: 20px 0;
 }
 .container {
   text-align: center;
 }
 .animation-container {
   width: 70%;
-  margin: 45px auto;
+  margin: 20px auto;
 }
 
 .animation-wrapper {
