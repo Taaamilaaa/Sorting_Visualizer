@@ -1,11 +1,13 @@
 import { ms } from './index.js';
+import { cancelRequested } from './sorting/cancelFlag.js';
 
 export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export async function animateSwap(colA, colB) {
-  const container = colA?.parentNode;
+  if (cancelRequested) return;
+
   const rectA = colA.getBoundingClientRect();
   const rectB = colB.getBoundingClientRect();
 
@@ -18,17 +20,15 @@ export async function animateSwap(colA, colB) {
   colB.style.transform = `translateX(${-distance}px)`;
 
   await delay(ms);
+  if (cancelRequested) return;
 
   colA.style.transition = '';
   colB.style.transition = '';
   colA.style.transform = '';
   colB.style.transform = '';
 
-  if (!container || !colA || !colB) return;
-
+  if (cancelRequested) return;
   colA.parentNode.insertBefore(colB, colA);
-
-  // await delay(ms);
 
   colA.classList.remove('animating');
   colB.classList.remove('animating');
