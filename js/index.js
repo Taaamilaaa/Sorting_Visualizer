@@ -14,6 +14,7 @@ import {
 import { onBubbleSortButtonClick } from './sorting/bubbleSort.js';
 import { onSelectionSortButtonClick } from './sorting/selectionSort.js';
 import { onInsertionSortButtonClick } from './sorting/insertionSort.js';
+import { requestCancel } from './sorting/cancelFlag.js';
 import { updateSliderBackground } from './sliderBackground.js';
 
 export let ms;
@@ -32,8 +33,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   speedSlider.classList.add('initialized');
 });
+
 generateArrButton.addEventListener('click', () => arrGeneration(2, 150, 10));
-cleanArrButton.addEventListener('click', () => cleaningContainer());
+
+cleanArrButton.addEventListener('click', () => {
+  requestCancel();
+  cleaningContainer();
+});
+
 bubbleSortButton.addEventListener('click', () => onBubbleSortButtonClick());
 selectionSortButton.addEventListener('click', () =>
   onSelectionSortButtonClick()
@@ -44,5 +51,4 @@ insertionSortButton.addEventListener('click', () =>
 speedSlider.addEventListener('input', () => {
   updateSliderBackground();
   speedValueSet();
-  console.log(speedSlider.value);
 });

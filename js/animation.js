@@ -1,4 +1,3 @@
-import { container } from './elements.js';
 import { ms } from './index.js';
 
 export function delay(ms) {
@@ -6,6 +5,7 @@ export function delay(ms) {
 }
 
 export async function animateSwap(colA, colB) {
+  const container = colA?.parentNode;
   const rectA = colA.getBoundingClientRect();
   const rectB = colB.getBoundingClientRect();
 
@@ -24,9 +24,13 @@ export async function animateSwap(colA, colB) {
   colA.style.transform = '';
   colB.style.transform = '';
 
-  colA.parentNode.insertBefore(colB, colA);
+  if (!container || !colA || !colB) {
+    return;
+  } else {
+    colA.parentNode.insertBefore(colB, colA);
+  }
 
-  await delay(ms);
+  // await delay(ms);
 
   colA.classList.remove('animating');
   colB.classList.remove('animating');

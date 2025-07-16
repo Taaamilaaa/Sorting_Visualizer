@@ -8,6 +8,7 @@ import {
 import { animateSwap } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
 import { delay } from '../animation.js';
+import { resetCancelFlag } from './cancelFlag.js';
 import { ms } from '../index.js';
 
 export async function insertionSort() {
@@ -26,12 +27,18 @@ export async function insertionSort() {
     await delay(ms);
 
     while (j > 0 && parseInt(columns[j - 1].id) > currentValue) {
+      const container = columns?.[j].parentElement;
       columns[j - 1].classList.add('shifting');
 
       await animateSwap(columns[j - 1], columns[j]);
 
       // Update the DOM and array
-      container.insertBefore(columns[j], columns[j - 1]);
+      if (!container) {
+        return;
+      } else {
+        container.insertBefore(columns[j], columns[j - 1]);
+      }
+
       [columns[j], columns[j - 1]] = [columns[j - 1], columns[j]];
 
       columns[j].classList.remove('shifting');
@@ -56,6 +63,7 @@ export async function insertionSort() {
 }
 
 export function onInsertionSortButtonClick() {
+  resetCancelFlag();
   insertionSort();
   bubbleSortButton.disabled = true;
   selectionSortButton.disabled = true;

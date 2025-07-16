@@ -7,6 +7,7 @@ import {
   selectionSortButton,
   insertionSortButton,
 } from '../elements.js';
+import { resetCancelFlag } from './cancelFlag.js';
 import { ms } from '../index.js';
 
 async function bubbleSort() {
@@ -23,7 +24,6 @@ async function bubbleSort() {
 
       const aAlpha = colorColumns(id1);
       const bAlpha = colorColumns(id2);
-
       //Style the columns being compared
 
       a.style.backgroundColor = `rgba(255, 157, 35, ${aAlpha})`;
@@ -32,9 +32,9 @@ async function bubbleSort() {
       await delay(ms);
 
       if (id1 > id2) {
-        // Swap them in the DOM
         a.classList.add('moving');
         await delay(ms);
+        // Swap them in the DOM
         await animateSwap(a, b);
 
         // And swap them in the columns array
@@ -43,8 +43,6 @@ async function bubbleSort() {
       a.classList.remove('moving');
       a.style.backgroundColor = `rgba(0, 128, 157, ${aAlpha})`;
       b.style.backgroundColor = `rgba(0, 128, 157, ${bAlpha})`;
-      a.classList.remove('animating');
-      b.classList.remove('animating');
     }
     //Styles for sorted columns
     const transparency = colorColumns(columns[n - i - 1].id);
@@ -68,6 +66,7 @@ export function onBubbleSortButtonClick() {
     bubbleSortButton.disabled = true;
     selectionSortButton.disabled = true;
     insertionSortButton.disabled = true;
+    resetCancelFlag();
     bubbleSort();
   }
 }

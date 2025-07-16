@@ -8,10 +8,12 @@ import {
 import { animateSwap } from '../animation.js';
 import { delay } from '../animation.js';
 import { colorColumns } from '../drowingColumns.js';
+import { resetCancelFlag } from './cancelFlag.js';
 import { ms } from '../index.js';
 
 async function selectionSort() {
   let columns = Array.from(container.children);
+
   const n = columns.length;
 
   for (let i = 0; i < n; i++) {
@@ -43,11 +45,16 @@ async function selectionSort() {
     }
 
     if (minIndex !== i) {
+      const container = columns?.[minIndex].parentElement;
       await animateSwap(columns[i], columns[minIndex]);
       await delay(ms);
 
       // Visually rearrange in DOM
-      container.insertBefore(columns[minIndex], columns[i]);
+      if (!container || !columns[minIndex] || !columns[i]) {
+        return;
+      } else {
+        container.insertBefore(columns[minIndex], columns[i]);
+      }
 
       // After insertion, you need to update columns - recreate the list of DOM elements
       columns = Array.from(container.children);
@@ -71,6 +78,7 @@ export function onSelectionSortButtonClick() {
     selectionSortButton.disabled = true;
     bubbleSortButton.disabled = true;
     insertionSortButton.disabled = true;
+    resetCancelFlag();
     selectionSort();
   }
 }

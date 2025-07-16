@@ -8,7 +8,6 @@ import {
   cleanArrButton,
 } from './elements.js';
 
-// очищаем массив
 function arrCleaner() {
   generateArrButton.disabled = false;
   randomArr.length = 0;
