@@ -24,11 +24,9 @@ export async function animateSwap(colA, colB) {
   colA.style.transform = '';
   colB.style.transform = '';
 
-  if (!container || !colA || !colB) {
-    return;
-  } else {
-    colA.parentNode.insertBefore(colB, colA);
-  }
+  if (!container || !colA || !colB) return;
+
+  colA.parentNode.insertBefore(colB, colA);
 
   // await delay(ms);
 

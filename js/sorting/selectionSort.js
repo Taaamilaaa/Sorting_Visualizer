@@ -50,11 +50,9 @@ async function selectionSort() {
       await delay(ms);
 
       // Visually rearrange in DOM
-      if (!container || !columns[minIndex] || !columns[i]) {
-        return;
-      } else {
-        container.insertBefore(columns[minIndex], columns[i]);
-      }
+      if (!container || !columns[minIndex] || !columns[i]) return;
+
+      container.insertBefore(columns[minIndex], columns[i]);
 
       // After insertion, you need to update columns - recreate the list of DOM elements
       columns = Array.from(container.children);
@@ -71,14 +69,9 @@ async function selectionSort() {
 }
 
 export function onSelectionSortButtonClick() {
-  const columns = Array.from(container.children);
-  if (columns.length === 0) {
-    alert('сгенерируйте числа');
-  } else {
-    selectionSortButton.disabled = true;
-    bubbleSortButton.disabled = true;
-    insertionSortButton.disabled = true;
-    resetCancelFlag();
-    selectionSort();
-  }
+  selectionSortButton.disabled = true;
+  bubbleSortButton.disabled = true;
+  insertionSortButton.disabled = true;
+  resetCancelFlag();
+  selectionSort();
 }
