@@ -103,7 +103,7 @@ button:disabled {
 .columns.animating {
   z-index: 1;
   transform-origin: bottom;
-  scale: 1.05;
+  /* scale: 1.05; */
 }
 .columns.animating.biggest {
   box-shadow: 0 0 10px 4px rgba(6, 146, 62, 0.4);
@@ -120,6 +120,6 @@ button:disabled {
 }
 
 .columns.shifting {
-  box-shadow: 0 0 10px 4px rgba(255, 157, 35, 0.5);
+  box-shadow: 0 0 10px 4px rgba(6, 146, 62, 0.4);
   transition: transform 0.3s ease;
 }
