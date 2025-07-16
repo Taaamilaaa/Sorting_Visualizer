@@ -3,7 +3,8 @@
 **Sorting Visualizer** is an interactive web app that demonstrates how classic
 sorting algorithms work using animated visualizations.
 
-🔗[Live Demo on GitHub Pages]([https://taaamilaaa.github.io/Sorting_Visualizer/])
+🔗[Live Demo on GitHub
+Pages]([\[https://taaamilaaa.github.io/Sorting_Visualizer/\] ](https://taaamilaaa.github.io/Sorting_Visualizer/))
 
 ---
 
