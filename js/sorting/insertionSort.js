@@ -29,10 +29,16 @@ export async function insertionSort() {
       columns[j - 1].classList.add('shifting');
 
       await animateSwap(columns[j - 1], columns[j]);
-      if (cancelRequested) return;
+      if (!columns[j] || !columns[j - 1]) return;
+      if (!columns[j - 1].parentNode) return;
 
       // Update the DOM and array
-      container.insertBefore(columns[j], columns[j - 1]);
+      try {
+        container.insertBefore(columns[j], columns[j - 1]);
+      } catch (e) {
+        console.warn('insertBefore error in insertionSort:', e);
+        return;
+      }
 
       [columns[j], columns[j - 1]] = [columns[j - 1], columns[j]];
 

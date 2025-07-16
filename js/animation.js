@@ -6,10 +6,11 @@ export function delay(ms) {
 }
 
 export async function animateSwap(colA, colB) {
-  if (cancelRequested) return;
+  if (cancelRequested || !colA || !colB || !colA.parentNode) return;
 
   const rectA = colA.getBoundingClientRect();
   const rectB = colB.getBoundingClientRect();
+  if (!rectA || !rectB) return;
 
   const distance = rectB.left - rectA.left;
 
@@ -27,8 +28,13 @@ export async function animateSwap(colA, colB) {
   colA.style.transform = '';
   colB.style.transform = '';
 
-  if (cancelRequested) return;
-  colA.parentNode.insertBefore(colB, colA);
+  if (cancelRequested || !colA.parentNode || !colB) return;
+
+  try {
+    colA.parentNode.insertBefore(colB, colA);
+  } catch (err) {
+    console.warn('insertBefore failed:', err);
+  }
 
   colA.classList.remove('animating');
   colB.classList.remove('animating');

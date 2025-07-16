@@ -50,6 +50,8 @@ async function selectionSort() {
     }
 
     if (minIndex !== i) {
+      if (!columns[i] || !columns[minIndex]) return;
+
       await animateSwap(columns[i], columns[minIndex]);
       if (cancelRequested) return;
 
@@ -57,8 +59,12 @@ async function selectionSort() {
       if (cancelRequested) return;
 
       // Visually rearrange in DOM
-
-      container.insertBefore(columns[minIndex], columns[i]);
+      try {
+        container.insertBefore(columns[minIndex], columns[i]);
+      } catch (e) {
+        console.warn('insertBefore error in selectionSort:', e);
+        return;
+      }
 
       // After insertion, you need to update columns - recreate the list of DOM elements
       columns = Array.from(container.children);
